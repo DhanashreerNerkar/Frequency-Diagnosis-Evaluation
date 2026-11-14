@@ -1,0 +1,7 @@
+CONFIRMED_COLLECTION = "confirmed_response"
+CASES_COLLECTION = "cases"
+AI_RESPONSES_COLLECTION = "ai_responses"
+MODEL_ACCURACY_COLLECTION = "model_accuracy"
+ACCURACY_SUMMARY_COLLECTION = "engine_accuracy_summary"
+PROBABILITY_GROUP_ACCURACY_COLLECTION = "probability_group_accuracy"
+ONSPOT_DIAGNOSIS = "onspot_diagnosis"

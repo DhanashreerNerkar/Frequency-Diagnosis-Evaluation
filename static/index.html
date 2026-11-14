@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synonym Review Interface</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header-bar">
+            <h1>Synonym Review Interface</h1>
+            <p class="subtitle">Review and Standardize Medical Diagnosis Synonyms</p>
+        </header>
+
+        <div class="filters-section">
+            <div class="filter-group">
+                <label class="filter-label" for="statusFilter">
+                    Filter synonyms by review status
+                </label>
+                <select id="statusFilter" class="status-filter">
+                    <option value="new">Pending Review</option>
+                    <option value="cleared">Same</option>
+                    <option value="wrong">Different</option>
+                    <option value="all">All Synonyms</option>
+                </select>
+            </div>
+            
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input"
+                    placeholder="Type to search..."
+                />
+                <button type="button" id="searchBtn" class="search-btn">Search</button>
+                <button type="button" id="clearSearchBtn" class="clear-search-btn">Clear</button>
+                <button type="button" id="editModeBtn" class="search-btn hidden">Enable Edit</button>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Loading synonyms...</p>
+        </div>
+
+        <div id="error" class="error hidden"></div>
+
+        <div id="reviewTableContainer" class="table-container hidden">
+            <form id="reviewForm">
+                <div class="table-scroll-wrapper">
+                    <table id="reviewTable" class="review-table">
+                        <thead>
+                            <tr>
+                                <th>New Synonym</th>
+                                <th>WHO ICD-11 Code</th>
+                                <th>WHO Standard Diagnose</th>
+                                <th>NIH ICD-11 Code</th>
+                                <th>NIH Standard Diagnose</th>
+                                <th>Same</th>
+                                <th>Different</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reviewTableBody">
+                            <!-- Rows will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-actions">
+                    <button type="submit" id="submitBtn" class="btn btn-primary">Submit Page</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="paginationContainer" class="pagination-container hidden">
+            <button id="prevBtn" class="btn btn-secondary pagination-btn-left">Previous</button>
+            <div class="pagination-info">
+                <span id="pageInfo">Page 1 of 1</span>
+            </div>
+            <button id="nextBtn" class="btn btn-secondary pagination-btn-right">Next</button>
+        </div>
+
+        <div id="emptyState" class="empty-state hidden">
+            <p>No synonyms pending review</p>
+            <p class="empty-subtitle">All synonyms have been reviewed or there are no new synonyms from the source.</p>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Submission</h2>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="modalCancel" class="btn btn-secondary">Cancel</button>
+                <button id="modalConfirm" class="btn btn-primary-static">Submit</button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
